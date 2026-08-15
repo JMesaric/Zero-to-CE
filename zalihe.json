@@ -1,0 +1,5 @@
+[
+  {"naziv": "Mlijeko 1L",  "kolicina": 8,  "minimum": 15, "maksimum": 50},
+  {"naziv": "Kruh bijeli", "kolicina": 23, "minimum": 10, "maksimum": 40},
+  {"naziv": "Jaja L",      "kolicina": 4,  "minimum": 20, "maksimum": 60}
+]
