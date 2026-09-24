@@ -22,13 +22,36 @@ def izvjestaj(zalihe):
             report[i['naziv']] = kol_nar(i)
     return report
 
+def dodaj_proizvod(zalihe, naziv, kolicina, minimum, maksimum):
+    d =  {}
+    d["naziv"] = naziv
+    d["kolicina"] = kolicina
+    d["minimum"] = minimum
+    d["maksimum"] = maksimum
+    zalihe.append(d)
+    with open("zalihe.json", "w") as json_file:
+        zz = json.dump(zalihe, json_file, indent=2)
+
+def azuriraj_kolicinu(zalihe, naziv, kolicina):
+    for i in zalihe:
+        if (i["naziv"] == naziv):
+            i["kolicina"] = kolicina
+            with open("zalihe.json", "w") as json_file:
+                zz = json.dump(zalihe, json_file, indent=2)
+                return ("Količina izmjenjena")
+    print ("Proizvod ne postoji") 
+
+    
+
 izvjestaj(zalihe)
 
-novi_proizvodi = {"naziv":"Coca Cola 2L", "kolicina":100, "minimum": 35, "maksimum": 100}
-zalihe.append(novi_proizvodi)
 narudzba = izvjestaj(zalihe)
 
 with open("narudzba.json","w") as json_file:
-    data1 = json.dump(narudzba, json_file)
+    data1 = json.dump(narudzba, json_file, indent=2)
+
+azuriraj_kolicinu(zalihe, "Mlijeko 1L", 7)
+
+
 
 
