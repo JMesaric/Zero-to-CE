@@ -1,7 +1,7 @@
 [
   {
     "naziv": "Mlijeko 1L",
-    "kolicina": 7,
+    "kolicina": 11,
     "minimum": 15,
     "maksimum": 50
   },
@@ -28,5 +28,11 @@
     "kolicina": 5,
     "minimum": 20,
     "maksimum": 80
+  },
+  {
+    "naziv": "Fanta 2L",
+    "kolicina": 5,
+    "minimum": 20,
+    "maksimum": 50
   }
 ]

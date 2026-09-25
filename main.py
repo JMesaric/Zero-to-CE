@@ -1,4 +1,5 @@
 import json
+from funkcije import trebam_nar, kol_nar, izvjestaj, dodaj_proizvod, azuriraj_kolicinu
 
 try:
     with open('zalihe.json') as f:
@@ -8,50 +9,12 @@ except FileNotFoundError:
 except json.JSONDecodeError:
     print("JSON datoteka nije ispravno napisana")
 
-def trebam_nar(proizvod):
-    return (proizvod['minimum'] > proizvod['kolicina'])
+print(trebam_nar(zalihe[3]))
 
-def kol_nar(proizvod):
-    return (proizvod['maksimum'] - proizvod['kolicina'])
+print(kol_nar(zalihe[1]))
 
+azuriraj_kolicinu(zalihe, "Fanta 2L", 5)
 
-def izvjestaj(zalihe):
-    report = {}
-    for i in zalihe:
-        if trebam_nar(i):
-            report[i['naziv']] = kol_nar(i)
-    return report
-
-def dodaj_proizvod(zalihe, naziv, kolicina, minimum, maksimum):
-    d =  {}
-    d["naziv"] = naziv
-    d["kolicina"] = kolicina
-    d["minimum"] = minimum
-    d["maksimum"] = maksimum
-    zalihe.append(d)
-    with open("zalihe.json", "w") as json_file:
-        zz = json.dump(zalihe, json_file, indent=2)
-
-def azuriraj_kolicinu(zalihe, naziv, kolicina):
-    for i in zalihe:
-        if (i["naziv"] == naziv):
-            i["kolicina"] = kolicina
-            with open("zalihe.json", "w") as json_file:
-                zz = json.dump(zalihe, json_file, indent=2)
-                return ("Količina izmjenjena")
-    print ("Proizvod ne postoji") 
-
-    
-
-izvjestaj(zalihe)
-
-narudzba = izvjestaj(zalihe)
-
-with open("narudzba.json","w") as json_file:
-    data1 = json.dump(narudzba, json_file, indent=2)
-
-azuriraj_kolicinu(zalihe, "Mlijeko 1L", 7)
-
-
+print(izvjestaj(zalihe))
 
 
